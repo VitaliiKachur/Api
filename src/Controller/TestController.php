@@ -17,39 +17,39 @@ class TestController extends AbstractController
 
     public const USERS_DATA = [
         [
-            'id'    => '1',
-            'email' => 'test1@gmail.com',
-            'name'  => 'John1'
+            'id' => '1',
+            'email' => 'vitalii_kachur@gmail.com',
+            'name' => 'Vitali'
         ],
         [
-            'id'    => '2',
-            'email' => 'test2@gmail.com',
-            'name'  => 'John2'
+            'id' => '2',
+            'email' => 'petro@gmail.com',
+            'name' => 'Petro'
         ],
         [
-            'id'    => '3',
-            'email' => 'test3@gmail.com',
-            'name'  => 'John3'
+            'id' => '3',
+            'email' => 'viktor@gmail.com',
+            'name' => 'Viktor'
         ],
         [
-            'id'    => '4',
-            'email' => 'test4@gmail.com',
-            'name'  => 'John4'
+            'id' => '4',
+            'email' => 'ivan@gmail.com',
+            'name' => 'Ivan'
         ],
         [
-            'id'    => '5',
-            'email' => 'test5@gmail.com',
-            'name'  => 'John5'
+            'id' => '5',
+            'email' => 'anna@gmail.com',
+            'name' => 'Anna'
         ],
         [
-            'id'    => '6',
-            'email' => 'test6@gmail.com',
-            'name'  => 'John6'
+            'id' => '6',
+            'email' => 'oleg@gmail.com',
+            'name' => 'Oleg'
         ],
         [
-            'id'    => '7',
-            'email' => 'test7@gmail.com',
-            'name'  => 'John7'
+            'id' => '7',
+            'email' => 'volodymyr@gmail.com',
+            'name' => 'Volodymyr'
         ],
     ];
 
@@ -81,17 +81,14 @@ class TestController extends AbstractController
             throw new UnprocessableEntityHttpException("name and email are required");
         }
 
-        // TODO check by regex
 
         $countOfUsers = count(self::USERS_DATA);
 
         $newUser = [
-            'id'    => $countOfUsers + 1,
-            'name'  => $requestData['name'],
+            'id' => $countOfUsers + 1,
+            'name' => $requestData['name'],
             'email' => $requestData['email']
         ];
-
-        // TODO add new user to collection
 
         return new JsonResponse([
             'data' => $newUser
@@ -102,8 +99,6 @@ class TestController extends AbstractController
     public function deleteItem(string $id): JsonResponse
     {
         $this->findUserById($id);
-
-        // TODO remove user from collection
 
         return new JsonResponse([], Response::HTTP_NO_CONTENT);
     }
@@ -118,8 +113,6 @@ class TestController extends AbstractController
         }
 
         $userData = $this->findUserById($id);
-
-        // TODO update user name
 
         $userData['name'] = $requestData['name'];
 
